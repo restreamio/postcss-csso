@@ -29,6 +29,7 @@
     "postcss": "^5.0.0"
   },
   "devDependencies": {
+    "es6-promise-polyfill": "^1.2.0",
     "mocha": "^2.4.5"
   },
   "files": [

@@ -1,0 +1,39 @@
+{
+  "name": "postcss-csso",
+  "version": "1.0.0",
+  "description": "PostCSS plugin to minify CSS with CSSO",
+  "keywords": [
+    "css",
+    "minifier",
+    "minify",
+    "compress",
+    "optimisation",
+    "csso",
+    "postcss",
+    "plugin"
+  ],
+  "homepage": "https://github.com/lahmatiy/postcss-csso",
+  "repository": "lahmatiy/postcss-csso",
+  "author": "Roman Dvornov <rdvornov@gmail.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "csso": "^1.7.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "postcss": "^5.0.19"
+  },
+  "files": [
+    "index.js",
+    "HISTORY.md",
+    "LICENSE",
+    "README.md"
+  ]
+}

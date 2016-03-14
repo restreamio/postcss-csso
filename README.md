@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lahmatiy/postcss-csso.svg?branch=master)](https://travis-ci.org/lahmatiy/postcss-csso)
+
 # postcss-csso
 
 [PostCSS](https://github.com/postcss/postcss) plugin to minify CSS with [CSSO](https://github.com/css/csso).

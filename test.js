@@ -57,7 +57,7 @@ it('should keep the shape of original postcss nodes', function() {
             });
         };
     });
-    var checker = postcss.plugin('checker', function(root) {
+    var checker = postcss.plugin('checker', function() {
         return function(root) {
             root.walkRules(function(node) {
                 count += node.marker;
@@ -93,6 +93,6 @@ try {
             }
         }
     });
-} catch(e) {
+} catch (e) {
     // should throw exception when no csso fixture found
 }

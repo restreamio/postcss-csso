@@ -20,8 +20,19 @@
   "engines": {
     "node": ">=0.10.0"
   },
+  "eslintConfig": {
+    "env": {
+      "node": true,
+      "mocha": true,
+      "es6": true
+    },
+    "rules": {
+      "no-undef": 2,
+      "no-unused-vars": [2, {"vars": "all", "args": "after-used"}]
+    }
+  },
   "scripts": {
-    "test": "mocha",
+    "test": "jscs . && eslint . && mocha",
     "travis": "npm run test"
   },
   "dependencies": {
@@ -30,6 +41,8 @@
   },
   "devDependencies": {
     "es6-promise-polyfill": "^1.2.0",
+    "eslint": "^2.2.0",
+    "jscs": "~2.10.0",
     "mocha": "^2.4.5"
   },
   "files": [

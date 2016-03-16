@@ -1,7 +1,7 @@
 {
   "name": "postcss-csso",
   "version": "1.0.0",
-  "description": "PostCSS plugin to minify CSS with CSSO",
+  "description": "PostCSS plugin to minify CSS using CSSO",
   "keywords": [
     "css",
     "minifier",

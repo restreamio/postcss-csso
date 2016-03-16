@@ -3,7 +3,7 @@
 
 # postcss-csso
 
-[PostCSS](https://github.com/postcss/postcss) plugin to minify CSS with [CSSO](https://github.com/css/csso).
+[PostCSS](https://github.com/postcss/postcss) plugin to minify CSS using [CSSO](https://github.com/css/csso).
 
 > If you have any difficulties with the output of this plugin, please use the [CSSO tracker](https://github.com/css/csso/issues).
 

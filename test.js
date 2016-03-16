@@ -27,3 +27,72 @@ describe('can be used as a postcss plugin', function() {
         });
     });
 });
+
+describe('should accept options for compress', function() {
+    var css = '.a { color: #ff0000; } .b { color: rgba(255, 0, 0, 1) }';
+    var minified = '.a,.b{color:red}';
+    var minifiedNoRestructure = '.a{color:red}.b{color:red}';
+
+    it('restruture on', function() {
+        return postcss().use(postcssCsso({ restructure: true })).process(css).then(function(result) {
+            assert.equal(result.css, minified);
+        });
+    });
+
+    it('restruture off', function() {
+        return postcss().use(postcssCsso({ restructure: false })).process(css).then(function(result) {
+            assert.equal(result.css, minifiedNoRestructure);
+        });
+    });
+});
+
+it('should keep the shape of original postcss nodes', function() {
+    var css = '.a { p: 1; } .b { p: 2; }';
+    var count = 0;
+
+    var marker = postcss.plugin('marker', function() {
+        return function(root) {
+            root.walkRules(function(node) {
+                node.marker = 1;
+            });
+        };
+    });
+    var checker = postcss.plugin('checker', function(root) {
+        return function(root) {
+            root.walkRules(function(node) {
+                count += node.marker;
+            });
+        };
+    });
+
+    return postcss([
+        marker,
+        postcssCsso,
+        checker
+    ]).process(css).then(function() {
+        assert.equal(count, 2);
+    });
+});
+
+// currently works only is used as linked package
+// TODO: find the way to use csso compress tests
+try {
+    describe('should pass csso compress tests', function() {
+        function createCompressTest(name, test) {
+            it(name, function() {
+                return postcss([postcssCsso]).process(test.source).then(function(result) {
+                    assert.equal(result.css, test.compressed);
+                });
+            });
+        }
+
+        var compressTests = require('./node_modules/csso/test/fixture/compress/');
+        for (var filename in compressTests) {
+            if (!/_[^\/]+\.css/.test(filename)) {
+                createCompressTest('node_modules/csso/' + filename, compressTests[filename]);
+            }
+        }
+    });
+} catch(e) {
+    // should throw exception when no csso fixture found
+}

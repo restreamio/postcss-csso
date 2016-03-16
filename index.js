@@ -13,7 +13,7 @@ function extend(dest, source) {
 var postcssCsso = postcss.plugin('postcss-csso', function postcssCsso(options) {
     return function(root, result) {
         result.root = cssoToPostcss(csso(postcssToCsso(root), extend({
-            outputAst: true
+            outputAst: 'internal'
         }, options || {})));
     }
 });

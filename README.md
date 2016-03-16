@@ -16,12 +16,25 @@ npm install postcss-csso
 ```js
 var postcss = require('postcss');
 var csso = require('postcss-csso');
-var css = '.example { color: #FF0000; }';
 
-postcss().use(csso()).process(css).then(function(result) {
-    console.log(result.css);
-    // .example{color:red}
-});
+postcss([
+    csso
+])
+    .process('.a { color: #FF0000; } .b { color: rgba(255, 0, 0, 1) }')
+    .then(function(result) {
+        console.log(result.css);
+        // .a,.b{color:red}
+    });
+
+// you also can pass an options
+postcss([
+    csso({ restructure: false })
+])
+    .process('.a { color: red; } .b { color: red; }')
+    .then(function(result) {
+        console.log(result.css);
+        // .a{color:red}.b{color:red}
+    });
 ```
 
 ## License

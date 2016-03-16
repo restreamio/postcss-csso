@@ -3,18 +3,17 @@ var csso = require('csso').compress;
 var postcssToCsso = require('./lib/postcssToCsso.js');
 var cssoToPostcss = require('./lib/cssoToPostcss.js');
 
-function extend(dest, source) {
-    return Object.keys(source).reduce(function(result, key) {
-        dest[key] = source[key];
-        return dest;
-    }, dest || {});
-}
-
 var postcssCsso = postcss.plugin('postcss-csso', function postcssCsso(options) {
+    // force set outputAst:internal to options until csso need it for backward capability
+    // TODO: remove it when possible
+    options = Object.create(options && typeof options === 'object' ? options : null, {
+        outputAst: {
+            value: 'internal'
+        }
+    });
+
     return function(root, result) {
-        result.root = cssoToPostcss(csso(postcssToCsso(root), extend({
-            outputAst: 'internal'
-        }, options || {})));
+        result.root = cssoToPostcss(csso(postcssToCsso(root), options));
     };
 });
 

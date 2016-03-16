@@ -33,6 +33,7 @@
     "mocha": "^2.4.5"
   },
   "files": [
+    "lib",
     "index.js",
     "HISTORY.md",
     "LICENSE",

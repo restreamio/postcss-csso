@@ -5,9 +5,9 @@
 
 [PostCSS](https://github.com/postcss/postcss) plugin to minify CSS using [CSSO](https://github.com/css/csso).
 
-Under the hood the plugin converts `PostCSS` AST into `CSSO` format, minifies it and converts back. The plugin uses either original `PostCSS` nodes or their clones on back convertation. Shape of `PostCSS` tree nodes (e.g. meta information added by another plugins) is stay the same in most cases. Also it allows to generate source map correctly.
+Under the hood the plugin converts `PostCSS` AST into `CSSO` format, optimises it and converts back. The plugin uses either input `PostCSS` tree nodes or their clones on reverse convertation. So shape of original `PostCSS` tree nodes persists the same after compression in most cases (e.g. properties added by other plugins isn't lost). Also this allows to generate source map correctly.
 
-Performance of the plugin is approximately the same as [CSSO](https://github.com/css/csso) has. See current state of perfomance in comparation [table](https://goalsmashers.github.io/css-minification-benchmark/)
+Performance of the plugin is approximately the same as `CSSO` has (see `CSSO` numbers in [comparison table](https://goalsmashers.github.io/css-minification-benchmark/)).
 
 > If you have any difficulties with the output of this plugin, please use the [CSSO tracker](https://github.com/css/csso/issues).
 

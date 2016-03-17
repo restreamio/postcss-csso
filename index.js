@@ -1,5 +1,5 @@
 var postcss = require('postcss');
-var csso = require('csso').compress;
+var compress = require('csso').compress;
 var postcssToCsso = require('./lib/postcssToCsso.js');
 var cssoToPostcss = require('./lib/cssoToPostcss.js');
 
@@ -13,7 +13,7 @@ var postcssCsso = postcss.plugin('postcss-csso', function postcssCsso(options) {
     });
 
     return function(root, result) {
-        result.root = cssoToPostcss(csso(postcssToCsso(root), options));
+        result.root = cssoToPostcss(compress(postcssToCsso(root), options));
     };
 });
 

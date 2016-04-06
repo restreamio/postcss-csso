@@ -33,7 +33,10 @@
   },
   "scripts": {
     "test": "jscs . && eslint . && mocha",
-    "travis": "npm run test"
+    "test": "mocha --reporter dot",
+    "codestyle": "jscs lib && eslint lib test",
+    "codestyle-and-test": "npm run codestyle && npm test",
+    "travis": "npm run codestyle-and-test"
   },
   "dependencies": {
     "csso": "^1.7.0",

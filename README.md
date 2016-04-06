@@ -36,7 +36,7 @@ postcss([
 postcss([
     csso({ restructure: false })
 ])
-    .process('.a { color: red; } .b { color: red; }')
+    .process('.a { color: #FF0000; } .b { color: rgba(255, 0, 0, 1) }')
     .then(function(result) {
         console.log(result.css);
         // .a{color:red}.b{color:red}

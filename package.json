@@ -39,7 +39,7 @@
     "travis": "npm run codestyle-and-test"
   },
   "dependencies": {
-    "csso": "^1.7.0",
+    "csso": "^2.0.0",
     "postcss": "^5.0.0"
   },
   "devDependencies": {

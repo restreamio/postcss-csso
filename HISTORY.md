@@ -1,3 +1,7 @@
+## 1.1.1 (April 12, 2016)
+
+- Fix exception when PostCSS at-rule node has no params (#4)
+
 ## 1.1.0 (April 7, 2016)
 
 - Migrate to [CSSO 2.0](https://github.com/css/csso/releases/tag/v2.0.0)

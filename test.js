@@ -46,6 +46,43 @@ describe('should accept options for compress', function() {
     });
 });
 
+describe('edge cases', function() {
+    it('should process empty', function() {
+        return postcss().use(postcssCsso).process('').then(function(result) {
+            assert.equal(result.css, '');
+        });
+    });
+
+    it('should process block with no selector', function() {
+        return postcss().use(postcssCsso).process('{foo:1}').then(function(result) {
+            assert.equal(result.css, '');
+        });
+    });
+
+    it('should process partial inited nodes', function() {
+        var emptyGenerator = postcss.plugin('emptyGenerator', function() {
+            return function(root) {
+                var atRule = postcss.atRule({
+                    name: 'test'
+                });
+                var rule = postcss.rule();
+
+                rule.append(postcss.decl());
+
+                root.append(atRule);
+                root.append(rule);
+            };
+        });
+
+        return postcss([
+            emptyGenerator,
+            postcssCsso
+        ]).process('').then(function(result) {
+            assert.equal(result.css, '@test;');
+        });
+    });
+});
+
 it('should keep the shape of original postcss nodes', function() {
     var css = '.a { p: 1; } .b { p: 2; }';
     var count = 0;

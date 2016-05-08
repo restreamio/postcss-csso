@@ -1,3 +1,7 @@
+## 1.1.2 (May 8, 2016)
+
+- Fix CSS parse error handling (#5)
+
 ## 1.1.1 (April 12, 2016)
 
 - Fix exception when PostCSS at-rule node has no params (#4)

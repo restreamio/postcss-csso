@@ -1,3 +1,7 @@
+## 2.0.0 (March 14, 2017)
+
+- Migrate to [CSSO 3.0](https://github.com/css/csso/releases/tag/v3.0.0)
+
 ## 1.1.2 (May 8, 2016)
 
 - Fix CSS parse error handling (#5)

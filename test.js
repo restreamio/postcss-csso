@@ -114,7 +114,7 @@ it('should keep the shape of original postcss nodes', function() {
 it('error handling', function() {
     return postcss([
         postcssCsso
-    ]).process('.test { color: * }').then(function() {
+    ]).process('.test { color: $ }').then(function() {
         assert(false, 'shouldn\'t to be successful');
     }, function(error) {
         assert.equal(error.name, 'CssSyntaxError');
@@ -127,10 +127,17 @@ it('error handling', function() {
 // TODO: find the way to use csso compress tests
 try {
     describe('should pass csso compress tests', function() {
+        function normalizeNewlines(str) {
+            return str.replace(/\r/g, '');
+        }
+
         function createCompressTest(name, test) {
             it(name, function() {
                 return postcss([postcssCsso]).process(test.source).then(function(result) {
-                    assert.equal(result.css, test.compressed);
+                    assert.equal(
+                        normalizeNewlines(result.css),
+                        normalizeNewlines(test.compressed)
+                    );
                 });
             });
         }

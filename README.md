@@ -33,7 +33,7 @@ postcss([
     });
 ```
 
-Plugin accepts the same [options](https://github.com/css/csso#minifysource-options) as `minify()` method of CSSO with no any changes.
+Plugin accepts the same [options](https://github.com/css/csso#compressast-options) as `compress()` method of CSSO with no any changes.
 
 ```js
 postcss([

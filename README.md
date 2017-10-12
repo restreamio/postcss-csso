@@ -3,11 +3,11 @@
 
 # postcss-csso
 
-[PostCSS](https://github.com/postcss/postcss) plugin to minify CSS using [CSSO](https://github.com/css/csso).
+[PostCSS](https://github.com/postcss/postcss) plugin to minify CSS using [CSSO](https://github.com/css/csso) (a CSS minifier with structural optimizations).
 
-Under the hood the plugin converts `PostCSS` AST into `CSSO` format, optimises it and converts back. The plugin uses either input `PostCSS` tree nodes or their clones on reverse convertation. So shape of original `PostCSS` tree nodes persists the same after compression in most cases (e.g. properties added by other plugins isn't lost). Also this allows to generate source map correctly.
+Under the hood, the plugin converts `PostCSS` AST into `CSSO`'s AST, optimises it and converts back. The plugin uses input `PostCSS`'s AST nodes (or their clones) on back convertation, so the shape of original `PostCSS`'s nodes persists the same after compression in most cases (e.g. properties added by other plugins isn't lost). This approach makes it possible to achieve a great performance and generate source maps correctly.
 
-Performance of the plugin is approximately the same as `CSSO` has (see `CSSO` numbers in [comparison table](https://goalsmashers.github.io/css-minification-benchmark/)).
+The performance of `postcss-csso` is approximately the same as `CSSO` has itself (see `CSSO` numbers in [minifiers comparison table](https://goalsmashers.github.io/css-minification-benchmark/)).
 
 > If you have any difficulties with the output of this plugin, please use the [CSSO tracker](https://github.com/css/csso/issues).
 
@@ -33,7 +33,7 @@ postcss([
     });
 ```
 
-Plugin accepts the same [options](https://github.com/css/csso#compressast-options) as `compress()` method of CSSO with no any changes.
+Plugin takes the same [options](https://github.com/css/csso#compressast-options) as `compress()` method of CSSO with no exception.
 
 ```js
 postcss([

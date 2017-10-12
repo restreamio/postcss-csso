@@ -133,7 +133,8 @@ try {
 
         function createCompressTest(name, test) {
             it(name, function() {
-                return postcss([postcssCsso]).process(test.source).then(function(result) {
+                var plugin = test.options ? postcssCsso(test.options) : postcssCsso;
+                return postcss([plugin]).process(test.source).then(function(result) {
                     assert.equal(
                         normalizeNewlines(result.css),
                         normalizeNewlines(test.compressed)

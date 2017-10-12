@@ -39,7 +39,7 @@
   },
   "scripts": {
     "test": "mocha --reporter dot",
-    "codestyle": "jscs lib test && eslint lib test",
+    "codestyle": "jscs lib test.js && eslint lib test.js",
     "codestyle-and-test": "npm run codestyle && npm test",
     "travis": "npm run codestyle-and-test"
   },

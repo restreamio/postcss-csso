@@ -28,13 +28,18 @@
     },
     "rules": {
       "no-undef": 2,
-      "no-unused-vars": [2, {"vars": "all", "args": "after-used"}]
+      "no-unused-vars": [
+        2,
+        {
+          "vars": "all",
+          "args": "after-used"
+        }
+      ]
     }
   },
   "scripts": {
-    "test": "jscs . && eslint . && mocha",
     "test": "mocha --reporter dot",
-    "codestyle": "jscs lib && eslint lib test",
+    "codestyle": "jscs lib test && eslint lib test",
     "codestyle-and-test": "npm run codestyle && npm test",
     "travis": "npm run codestyle-and-test"
   },
@@ -44,9 +49,9 @@
   },
   "devDependencies": {
     "es6-promise-polyfill": "^1.2.0",
-    "eslint": "^2.2.0",
-    "jscs": "~2.10.0",
-    "mocha": "^2.4.5"
+    "eslint": "^4.8.0",
+    "jscs": "^3.0.0",
+    "mocha": "^4.0.0"
   },
   "files": [
     "lib",

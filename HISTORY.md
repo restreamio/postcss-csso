@@ -1,3 +1,8 @@
+## 3.0.0 (October 12, 2017)
+
+- Migrated to [PostCSS](https://github.com/postcss/postcss) `6.0.0`
+- Migrated to [CSSO](https://github.com/css/csso) `3.3.0`
+
 ## 2.0.0 (March 14, 2017)
 
 - Migrate to [CSSO 3.0](https://github.com/css/csso/releases/tag/v3.0.0)

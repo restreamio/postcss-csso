@@ -20,28 +20,11 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "eslintConfig": {
-    "env": {
-      "node": true,
-      "mocha": true,
-      "es6": true
-    },
-    "rules": {
-      "no-undef": 2,
-      "no-unused-vars": [
-        2,
-        {
-          "vars": "all",
-          "args": "after-used"
-        }
-      ]
-    }
-  },
   "scripts": {
     "test": "mocha --reporter dot",
-    "codestyle": "jscs lib test.js && eslint lib test.js",
-    "codestyle-and-test": "npm run codestyle && npm test",
-    "travis": "npm run codestyle-and-test"
+    "lint": "eslint lib *.js",
+    "lint-and-test": "npm run lint && npm test",
+    "travis": "npm run lint-and-test"
   },
   "dependencies": {
     "csso": "~3.3.0",
@@ -50,14 +33,10 @@
   "devDependencies": {
     "es6-promise-polyfill": "^1.2.0",
     "eslint": "^4.8.0",
-    "jscs": "^3.0.0",
     "mocha": "^4.0.0"
   },
   "files": [
     "lib",
-    "index.js",
-    "HISTORY.md",
-    "LICENSE",
-    "README.md"
+    "index.js"
   ]
 }

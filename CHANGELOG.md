@@ -1,6 +1,6 @@
 ## 4.0.0 (November 2, 2019)
 
-- Droped support for Node.js < 8.0
+- Dropped support for Node.js < 8.0
 - Added support for `postcss` `^7.0`
 - Moved `postcss` to peer dependencies
 - Bumped `csso` to `^4.0`

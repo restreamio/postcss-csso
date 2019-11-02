@@ -1,5 +1,5 @@
 var postcss = require('postcss');
-var compress = require('csso').compress;
+var compress = require('csso').syntax.compress;
 var postcssToCsso = require('./lib/postcssToCsso.js');
 var cssoToPostcss = require('./lib/cssoToPostcss.js');
 

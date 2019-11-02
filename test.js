@@ -114,12 +114,12 @@ it('should keep the shape of original postcss nodes', function() {
 it('error handling', function() {
     return postcss([
         postcssCsso
-    ]).process('.test { color: $ }').then(function() {
+    ]).process('.test { color: ! }').then(function() {
         assert(false, 'shouldn\'t to be successful');
     }, function(error) {
-        assert.equal(error.name, 'CssSyntaxError');
+        assert.equal(error.name, 'SyntaxError');
         assert.equal(error.line, 1);
-        assert.equal(error.column, 16);
+        assert.equal(error.column, 9);
     });
 });
 

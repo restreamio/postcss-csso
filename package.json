@@ -26,14 +26,17 @@
     "lint-and-test": "npm run lint && npm test",
     "travis": "npm run lint-and-test"
   },
+  "peerDependencies": {
+    "postcss": ">=6.0.0 <8.0.0"
+  },
   "dependencies": {
-    "csso": "^4.0.2",
-    "postcss": "^6.0.0"
+    "csso": "^4.0.2"
   },
   "devDependencies": {
     "es6-promise-polyfill": "^1.2.0",
     "eslint": "^6.6.0",
-    "mocha": "^6.2.0"
+    "mocha": "^6.2.0",
+    "postcss": "^7.0.0"
   },
   "files": [
     "lib",

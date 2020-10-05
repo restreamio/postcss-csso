@@ -1,6 +1,7 @@
 ## next
 
 - Migrated to `postcss@^8.0.0`, dropped support for earlier versions
+- Dropped support for Node.js < 10.12
 - Removed explicit requires of `postcss`
 - Dropped `process` method in export
 

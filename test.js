@@ -2,9 +2,6 @@ const assert = require('assert');
 const postcss = require('postcss');
 const postcssCsso = require('./index.js');
 
-// make postcss work on node.js 0.10
-global.Promise = require('es6-promise-polyfill').Promise;
-
 describe('can be used as a postcss plugin', function() {
     const css = '.a { color: #ff0000; } @media all { .b { color: rgba(255, 0, 0, 1) } }';
     const minified = '.a{color:red}@media all{.b{color:red}}';

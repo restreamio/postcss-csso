@@ -1,4 +1,4 @@
-## next
+## 5.0.0 (October 5, 2020)
 
 - Migrated to `postcss@^8.0.0`, dropped support for earlier versions
 - Dropped support for Node.js < 10.12

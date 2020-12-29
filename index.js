@@ -4,7 +4,7 @@ const cssoToPostcss = require('./lib/cssoToPostcss.js');
 
 module.exports = (options = {}) => ({
     postcssPlugin: 'postcss-csso',
-    Once(root, { result, postcss }) {
+    OnceExit(root, { result, postcss }) {
         result.root = cssoToPostcss(compress(postcssToCsso(root), options).ast, postcss);
     }
 });

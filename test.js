@@ -63,12 +63,8 @@ describe('edge cases', function() {
                 const atRule = postcss.atRule({
                     name: 'test'
                 });
-                const rule = postcss.rule();
-
-                rule.append(postcss.decl());
 
                 root.append(atRule);
-                root.append(rule);
             }
         };
 

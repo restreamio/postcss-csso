@@ -1,5 +1,6 @@
 const assert = require('assert');
 const postcss = require('postcss');
+const postcssNested = require('postcss-nested');
 const postcssCsso = require('./index.js');
 
 describe('can be used as a postcss plugin', function() {
@@ -61,11 +62,13 @@ describe('edge cases', function() {
             postcssPlugin: 'emptyGenerator',
             Once(root) {
                 const atRule = postcss.atRule({
-                    name: 'test'
+                    name: 'atrule'
                 });
                 const rule = postcss.rule();
 
-                rule.append(postcss.decl());
+                rule.append(postcss.decl({
+                    prop: 'prop'
+                }));
 
                 root.append(atRule);
                 root.append(rule);
@@ -76,12 +79,12 @@ describe('edge cases', function() {
             emptyGenerator,
             postcssCsso
         ]).process('').then(function(result) {
-            assert.strictEqual(result.css, '@test;');
+            assert.strictEqual(result.css, '@atrule;');
         });
     });
 });
 
-it('should keep the shape of original postcss nodes', function() {
+it('should keep shape of original postcss nodes', function() {
     const css = '.a { p: 1; } .b { p: 2; }';
     let count = 0;
 
@@ -121,6 +124,15 @@ it('error handling', function() {
         assert.strictEqual(error.line, 1);
         assert.strictEqual(error.column, 9);
     });
+});
+
+it('should work with postcss-nested (issue #19)', function() {
+    return postcss([
+        postcssNested,
+        postcssCsso
+    ])
+        .process('.c { .touch &:hover { color: #ff0000; } }')
+        .then(result => assert.strictEqual(result.css, '.touch .c:hover{color:red}'));
 });
 
 // currently works only is used as linked package

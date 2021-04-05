@@ -1,3 +1,7 @@
+## 5.0.1 (April 5, 2021)
+
+- Fixed order of compression processing to perform when everything else is finished (@onigoetz, #20)
+
 ## 5.0.0 (October 5, 2020)
 
 - Migrated to `postcss@^8.0.0`, dropped support for earlier versions

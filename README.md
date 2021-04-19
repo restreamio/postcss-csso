@@ -48,7 +48,7 @@ postcss([
 
 Using in `postcss.config.js`:
 
-```
+```js
 module.exports = {
     plugins: [
         require('postcss-csso')({

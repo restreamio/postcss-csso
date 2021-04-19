@@ -46,6 +46,18 @@ postcss([
     });
 ```
 
+Using in `postcss.config.js`:
+
+```
+module.exports = {
+    plugins: [
+        require('postcss-csso')({
+            restructure: false
+        })
+    ]
+};
+```
+
 ## License
 
 MIT

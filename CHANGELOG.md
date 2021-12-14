@@ -1,3 +1,9 @@
+## next
+
+- Changed supported versions of Node.js to `^12.20.0`, `^14.13.0` and `>=15.0.0`
+- Converted to ES modules, CommonJS is supported as well (dual module)
+- Bumped `csso` to [`5.0`](https://github.com/css/csso/releases/tag/v5.0.0)
+
 ## 5.0.1 (April 5, 2021)
 
 - Fixed order of compression processing to perform when everything else is finished (@onigoetz, #20)

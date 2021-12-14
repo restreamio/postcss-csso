@@ -1,5 +1,7 @@
 [![NPM version](https://img.shields.io/npm/v/postcss-csso.svg)](https://www.npmjs.com/package/postcss-csso)
-[![Build Status](https://travis-ci.org/lahmatiy/postcss-csso.svg?branch=master)](https://travis-ci.org/lahmatiy/postcss-csso)
+[![Build Status](https://github.com/lahmatiy/postcss-csso/actions/workflows/build.yml/badge.svg)](https://github.com/lahmatiy/postcss-csso/actions/workflows/build.yml)
+[![Coverage Status](https://coveralls.io/repos/github/lahmatiy/postcss-csso/badge.svg?branch=master)](https://coveralls.io/github/lahmatiy/postcss-csso?branch=master)
+[![Twitter](https://img.shields.io/badge/Twitter-@cssoptimizer-blue.svg)](https://twitter.com/cssoptimizer)
 
 # postcss-csso
 
@@ -20,14 +22,16 @@ npm install postcss-csso
 ## Usage
 
 ```js
-var postcss = require('postcss');
-var csso = require('postcss-csso');
+import postcss from 'postcss';
+import csso from 'postcss-csso';
+// CommonJS:
+// const csso = require('postcss-csso');
 
 postcss([
     csso
 ])
     .process('.a { color: #FF0000; } .b { color: rgba(255, 0, 0, 1) }')
-    .then(function(result) {
+    .then((result) => {
         console.log(result.css);
         // .a,.b{color:red}
     });
@@ -40,7 +44,7 @@ postcss([
     csso({ restructure: false })
 ])
     .process('.a { color: #FF0000; } .b { color: rgba(255, 0, 0, 1) }')
-    .then(function(result) {
+    .then((result) => {
         console.log(result.css);
         // .a{color:red}.b{color:red}
     });
@@ -49,13 +53,13 @@ postcss([
 Using in `postcss.config.js`:
 
 ```js
-module.exports = {
-    plugins: [
-        require('postcss-csso')({
-            restructure: false
-        })
-    ]
-};
+import csso from 'postcss-csso';
+
+export const plugins = [
+    csso({
+        restructure: false
+    })
+];
 ```
 
 ## License

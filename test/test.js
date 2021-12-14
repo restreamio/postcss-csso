@@ -128,17 +128,33 @@ it('should keep shape of original postcss nodes', () => {
     );
 });
 
-it('error handling', () =>
-    assert.rejects(
-        postcss([postcssCsso])
-            .process('.test { color }'),
-        {
-            name: 'CssSyntaxError',
-            line: 1,
-            column: 9
-        }
-    )
-);
+describe('error handling', () => {
+    it('postcss error', () =>
+        assert.rejects(
+            postcss([postcssCsso])
+                .process('.test { color }'),
+            {
+                name: 'CssSyntaxError',
+                line: 1,
+                column: 9
+            }
+        )
+    );
+
+    it('csstree error', () =>
+        assert.rejects(
+            postcss([postcssCsso])
+                .process('a \n :nth-child(2n+) { color: red }'),
+            error => {
+                assert.strictEqual(error.name, 'CssSyntaxError');
+                assert.strictEqual(error.message, 'postcss-csso: <css input>:2:16: Integer is expected');
+                assert.strictEqual(error.line, 2);
+                assert.strictEqual(error.column, 16);
+                return true;
+            }
+        )
+    );
+});
 
 it('should work with postcss-nested (issue #19)', () =>
     postcss([
@@ -150,6 +166,58 @@ it('should work with postcss-nested (issue #19)', () =>
             strictEqual(result.css, '.touch .c:hover{color:red}')
         )
 );
+
+describe('ast transformations', () => {
+    const tests = [
+        [
+            '/* before */ rule { c: 1 } /*! after */',
+            'rule{c:1}\n/*! after */'
+        ],
+        [
+            `/* before */
+            rule { c: 1 }
+            /*! after */`,
+            'rule{c:1}\n/*! after */'
+        ],
+        [
+            '.test { color: #ff0000; padding: 2px; padding-right: 3em; }',
+            '.test{color:red;padding:2px 3em 2px 2px}'
+        ],
+        [
+            '.super-super-super-super-super-long-selector { padding: 4px; color: blue } .super-super-super-super-super-long-selector, .b { color: red }',
+            '.super-super-super-super-super-long-selector{padding:4px;color:red}.b{color:red}'
+        ],
+        [
+            '.super-super-super-super-super-long-selector { padding: 4px; color: blue } .super-super-super-super-super-long-selector, .b { color: red !ie }',
+            '.super-super-super-super-super-long-selector{padding:4px;color:red!ie}.b{color:red!ie}'
+        ],
+        [
+            `.a {
+                color: red;
+                width: 100px;
+            }
+            .b {
+                width: 100px;
+                color: rgba(1, 2, 3, .5);
+            }`,
+            '.a,.b{width:100px}.a{color:red}.b{color:rgba(1,2,3,.5)}'
+        ],
+        [
+            '.test { padding-top: 1px; padding-right: 2px; padding-bottom: 1px; padding-left: 2px }',
+            '.test{padding:1px 2px}'
+        ]
+    ];
+
+    for (const [input, expected] of tests) {
+        it(input, () =>
+            postcss([postcssCsso({ forceMediaMerge: true })])
+                .process(input)
+                .then(result =>
+                    strictEqual(result.css, expected)
+                )
+        );
+    }
+});
 
 // currently works only is used as linked package
 // TODO: find the way to use csso compress tests

@@ -43,7 +43,7 @@
     "postcss": "^8.0.0"
   },
   "dependencies": {
-    "csso": "^5.0.0"
+    "csso": "^5.0.1"
   },
   "devDependencies": {
     "c8": "^7.10.0",

@@ -6,6 +6,7 @@ const external = [
     'module',
     'postcss-csso',
     'csso',
+    'csso/syntax',
     'css-tree',
     'postcss',
     'postcss-nested'

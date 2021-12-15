@@ -1,4 +1,4 @@
-## next
+## 6.0.0 (December 14, 2021)
 
 - Changed supported versions of Node.js to `^12.20.0`, `^14.13.0` and `>=15.0.0`
 - Converted to ES modules, CommonJS is supported as well (dual module)

@@ -1,3 +1,7 @@
+## next
+
+- Bumped `csso` to [`5.0.5`](https://github.com/css/csso/releases/tag/v5.0.5) which fixes various bugs
+
 ## 6.0.0 (December 14, 2021)
 
 - Changed supported versions of Node.js to `^12.20.0`, `^14.13.0` and `>=15.0.0`

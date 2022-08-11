@@ -1,4 +1,4 @@
-## next
+## 6.0.1 (August 11, 2022)
 
 - Bumped `csso` to [`5.0.5`](https://github.com/css/csso/releases/tag/v5.0.5) which fixes various bugs
 
